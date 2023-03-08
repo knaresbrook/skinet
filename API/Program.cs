@@ -17,7 +17,7 @@ builder.Services.AddControllers();
 builder.Services.AddApplicationServices(builder.Configuration);
 
 var app = builder.Build();
-
+app.UseCors("CorsPolicy");
 app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseStatusCodePagesWithReExecute("/errors/{0}");
@@ -28,8 +28,6 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 app.UseStaticFiles();
-
-app.UseCors("CorsPolicy");
 
 app.UseAuthorization();
 
